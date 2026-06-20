@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero-Centric Design - UI Style Showcase</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+:root {
+  --page-bg: #FFFFFF;
+  --text-color: #111827;
+  --text-secondary: #6B7280;
+  --primary: #4F46E5;
+  --primary-dark: #4338CA;
+  --primary-light: #818CF8;
+  --accent: #F59E0B;
+  --surface: #F9FAFB;
+  --border: #E5E7EB;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--page-bg);
+  color: var(--text-color);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Hero - FULL VIEWPORT */
+.hero-centric-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 30%, #4338CA 60%, #6366F1 100%);
+  color: #fff;
+}
+
+.hero-centric-hero::before {
+  content: '';
+  position: absolute;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(245,158,11,0.15), transparent 60%);
+  top: -200px; right: -200px;
+  border-radius: 50%;
+}
+
+.hero-centric-hero::after {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(99,102,241,0.2), transparent 60%);
+  bottom: -200px; left: -100px;
+  border-radius: 50%;
+}
+
+.hero-centric-hero .hero-overline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.hero-centric-hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  max-width: 800px;
+  position: relative;
+}
+
+.hero-centric-hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent), #FBBF24, #F59E0B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-centric-hero .hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255,255,255,0.7);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 400;
+  position: relative;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-cta-group .hero-btn {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-family: system-ui;
+  transition: all 0.3s;
+}
+
+.hero-btn.btn-cta {
+  background: var(--accent);
+  color: #1E1B4B;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+  animation: ctaPulse 3s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(245,158,11,0.4); }
+  50% { box-shadow: 0 4px 30px rgba(245,158,11,0.6), 0 0 60px rgba(245,158,11,0.2); }
+}
+
+.hero-btn.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(245,158,11,0.5);
+}
+
+.hero-btn.btn-ghost {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+}
+
+.hero-btn.btn-ghost:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 60px;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .stat-number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.hero-stat .stat-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+/* Navigation */
+.hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--page-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.hero-nav .nav-brand {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.hero-nav .nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.hero-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.hero-nav a:hover {
+  color: var(--text-color);
+  background: var(--surface);
+}
+
+.hero-nav .nav-cta {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 10px 20px;
+}
+
+.hero-nav .nav-cta:hover {
+  background: var(--primary-dark) !important;
+}
+
+/* Features section */
+.hero-features {
+  padding: 80px 24px;
+}
+
+.hero-features h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.hero-features .section-desc {
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 8px 30px rgba(79,70,229,0.08);
+  transform: translateY(-3px);
+}
+
+.feature-card .card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Buttons */
+.hero-buttons {
+  padding: 80px 24px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.hero-buttons h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-btn-style {
+  font-family: system-ui;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.hero-btn-style.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.hero-btn-style.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+}
+
+.hero-btn-style.btn-accent {
+  background: var(--accent);
+  color: #1E1B4B;
+}
+
+.hero-btn-style.btn-accent:hover {
+  background: #D97706;
+  transform: translateY(-1px);
+}
+
+.hero-btn-style.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.hero-btn-style.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.hero-btn-style.btn-ghost-style {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.hero-btn-style.btn-ghost-style:hover {
+  color: var(--text-color);
+  background: var(--surface);
+}
+
+/* Forms */
+.hero-forms {
+  padding: 80px 24px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.hero-forms h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.hero-forms .section-desc {
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.hero-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: system-ui;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-color);
+  background: var(--page-bg);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.hero-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+}
+
+.hero-input::placeholder {
+  color: #D1D5DB;
+}
+
+textarea.hero-input {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Testimonials */
+.hero-testimonials {
+  padding: 80px 24px;
+  background: var(--surface);
+}
+
+.hero-testimonials h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.testimonial-card .stars {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.testimonial-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.testimonial-card .author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-card .author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.testimonial-card .author-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.testimonial-card .author-role {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Typography */
+.hero-typography {
+  padding: 80px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-typography h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.type-sample {
+  margin-bottom: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+.type-sample .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+.type-sample h1 { font-size: 2.2rem; font-weight: 900; }
+.type-sample h2 { font-size: 1.6rem; font-weight: 800; }
+.type-sample h3 { font-size: 1.2rem; font-weight: 700; }
+.type-sample p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; }
+
+/* Color Palette */
+.hero-palette {
+  padding: 80px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-palette h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 14px;
+}
+
+.swatch {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+}
+
+.swatch:hover { transform: translateY(-3px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+.swatch .swatch-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.9);
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: #333;
+}
+
+/* CTA Banner */
+.hero-cta-banner {
+  padding: 80px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #1E1B4B, #312E81, #4338CA);
+  color: #fff;
+}
+
+.hero-cta-banner h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.hero-cta-banner p {
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+
+.hero-cta-banner .cta-btn {
+  padding: 16px 40px;
+  background: var(--accent);
+  color: #1E1B4B;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: system-ui;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+}
+
+.hero-cta-banner .cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(245,158,11,0.5);
+}
+
+/* Modal */
+.hero-modal-section {
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.hero-modal-section h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.modal-trigger {
+  padding: 14px 28px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: system-ui;
+  transition: all 0.2s;
+}
+
+.modal-trigger:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(17,24,39,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active { display: flex; }
+
+.hero-modal {
+  background: var(--page-bg);
+  border-radius: 16px;
+  padding: 36px;
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.hero-modal h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.hero-modal p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.hero-modal .modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-modal .modal-close:hover {
+  background: var(--border);
+}
+
+/* Style Info */
+.hero-info {
+  padding: 60px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-info h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.info-item {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.info-item:hover {
+  border-color: var(--primary-light);
+}
+
+.info-item .info-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.info-item .info-value {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .hero-centric-hero h1 { font-size: 2rem; }
+  .hero-stats { gap: 24px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .hero-nav .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="vp-bar">
+  <span class="vp-label">📐 Viewport:</span>
+  <button class="vp-btn" data-size="1920">1920</button>
+  <button class="vp-btn" data-size="1440">1440</button>
+  <button class="vp-btn" data-size="1024">1024</button>
+  <button class="vp-btn" data-size="768">768</button>
+  <button class="vp-btn" data-size="375">375</button>
+  <button class="vp-btn" data-size="320">320</button>
+  <span id="vp-width" class="vp-width">Full</span>
+  <a href="index.html" class="vp-back">← Back to All Styles</a>
+</div>
+<div class="vp-frame">
+
+<!-- Hero - FULL VIEWPORT HEIGHT -->
+<section class="hero-centric-hero">
+  <span class="hero-overline">Introducing Hero v2.0</span>
+  <h1>Build Something <span class="gradient-text">Extraordinary</span></h1>
+  <p class="hero-subtitle">The complete platform for modern teams. Ship faster, collaborate smarter, and scale with confidence.</p>
+  <div class="hero-cta-group">
+    <button class="hero-btn btn-cta">Start Free Trial</button>
+    <button class="hero-btn btn-ghost">Watch Demo</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="stat-number">10K+</div>
+      <div class="stat-label">Teams</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">99.9%</div>
+      <div class="stat-label">Uptime</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-number">50M+</div>
+      <div class="stat-label">Tasks Shipped</div>
+    </div>
+  </div>
+</section>
+
+<!-- Navigation -->
+<nav class="hero-nav">
+  <span class="nav-brand">HeroPlatform</span>
+  <div class="nav-links">
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">Docs</a>
+    <a href="#">Blog</a>
+    <a href="#" class="nav-cta">Sign Up</a>
+  </div>
+</nav>
+
+<!-- Features -->
+<section class="hero-features">
+  <h2>Why Teams Choose Hero</h2>
+  <p class="section-desc">Everything you need to build, ship, and scale -- all in one place.</p>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <div class="card-icon" style="background:#EEF2FF;color:#4F46E5;">&#9889;</div>
+      <h3>Lightning Fast</h3>
+      <p>Optimized from the ground up. Pages load in under 200ms, every single time.</p>
+    </article>
+    <article class="feature-card">
+      <div class="card-icon" style="background:#FEF3C7;color:#D97706;">&#128200;</div>
+      <h3>Real-time Analytics</h3>
+      <p>See what matters instantly with live dashboards and actionable insights.</p>
+    </article>
+    <article class="feature-card">
+      <div class="card-icon" style="background:#D1FAE5;color:#047857;">&#128274;</div>
+      <h3>Enterprise Security</h3>
+      <p>SOC 2 Type II certified. Your data is encrypted at rest and in transit.</p>
+    </article>
+  </div>
+</section>
+
+<!-- Buttons -->
+<section class="hero-buttons">
+  <h2>Button Styles</h2>
+  <div class="btn-grid">
+    <button class="hero-btn-style btn-primary">Primary</button>
+    <button class="hero-btn-style btn-accent">Accent</button>
+    <button class="hero-btn-style btn-outline">Outline</button>
+    <button class="hero-btn-style btn-ghost-style">Ghost</button>
+  </div>
+</section>
+
+<!-- Forms -->
+<section class="hero-forms">
+  <h2>Get Started</h2>
+  <p class="section-desc">Create your free account in seconds.</p>
+  <div class="form-group">
+    <label>Work Email</label>
+    <input type="email" class="hero-input" placeholder="you@company.com">
+  </div>
+  <div class="form-group">
+    <label>Full Name</label>
+    <input type="text" class="hero-input" placeholder="Jane Smith">
+  </div>
+  <div class="form-group">
+    <label>Company</label>
+    <input type="text" class="hero-input" placeholder="Acme Inc.">
+  </div>
+  <div class="form-group">
+    <label>Message</label>
+    <textarea class="hero-input" placeholder="Tell us about your team..."></textarea>
+  </div>
+  <button class="hero-btn-style btn-primary" style="width:100%;padding:14px;">Create Account</button>
+</section>
+
+<!-- Testimonials -->
+<section class="hero-testimonials">
+  <h2>Loved by Teams Worldwide</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Hero transformed how our team ships products. We went from monthly releases to daily deploys."</p>
+      <div class="author">
+        <div class="author-avatar" style="background:#4F46E5;">SK</div>
+        <div>
+          <div class="author-name">Sarah Kim</div>
+          <div class="author-role">CTO, TechFlow</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"The analytics alone are worth the price. We finally understand our users and can make data-driven decisions."</p>
+      <div class="author">
+        <div class="author-avatar" style="background:#047857;">MR</div>
+        <div>
+          <div class="author-name">Marcus Rivera</div>
+          <div class="author-role">PM, GrowthBase</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"Best onboarding experience I have ever seen. Our entire team was productive within an hour."</p>
+      <div class="author">
+        <div class="author-avatar" style="background:#D97706;">AL</div>
+        <div>
+          <div class="author-name">Anna Lee</div>
+          <div class="author-role">CEO, DesignStudio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Typography -->
+<section class="hero-typography">
+  <h2>Typography</h2>
+  <div class="type-sample">
+    <div class="label">Display</div>
+    <h1>Lead with Impact</h1>
+  </div>
+  <div class="type-sample">
+    <div class="label">Heading</div>
+    <h2>Scale with Confidence</h2>
+  </div>
+  <div class="type-sample">
+    <div class="label">Subheading</div>
+    <h3>Built for Modern Teams</h3>
+  </div>
+  <div class="type-sample">
+    <div class="label">Body</div>
+    <p>Hero-centric design puts the most important message front and center. A full-viewport hero with a compelling headline, clear value proposition, and prominent CTA drives conversions and captures attention from the first pixel.</p>
+  </div>
+</section>
+
+<!-- Color Palette -->
+<section class="hero-palette">
+  <h2>Brand Palette</h2>
+  <div class="palette-grid">
+    <div class="swatch" style="background:#4F46E5;"><span class="swatch-label" style="color:#fff;">#4F46E5</span></div>
+    <div class="swatch" style="background:#4338CA;"><span class="swatch-label" style="color:#fff;">#4338CA</span></div>
+    <div class="swatch" style="background:#818CF8;"><span class="swatch-label">#818CF8</span></div>
+    <div class="swatch" style="background:#F59E0B;"><span class="swatch-label">#F59E0B</span></div>
+    <div class="swatch" style="background:#111827;"><span class="swatch-label" style="color:#fff;">#111827</span></div>
+    <div class="swatch" style="background:#F9FAFB;"><span class="swatch-label" style="color:#333;">#F9FAFB</span></div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="hero-cta-banner">
+  <h2>Ready to Get Started?</h2>
+  <p>Join 10,000+ teams already building with Hero. Start your free trial today -- no credit card required.</p>
+  <button class="cta-btn">Start Free Trial</button>
+</section>
+
+<!-- Modal -->
+<section class="hero-modal-section">
+  <h2>Quick Dialog</h2>
+  <button class="modal-trigger" onclick="document.getElementById('hero-modal').classList.add('active')">Open Dialog</button>
+  <div id="hero-modal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="hero-modal">
+      <button class="modal-close" onclick="document.getElementById('hero-modal').classList.remove('active')">&times;</button>
+      <h3>Welcome to Hero</h3>
+      <p>This dialog demonstrates the hero-centric approach to overlays -- clean, focused, and designed to guide the user to a single action.</p>
+      <button class="hero-btn-style btn-primary" onclick="document.getElementById('hero-modal').classList.remove('active')" style="width:100%;">Get Started</button>
+    </div>
+  </div>
+</section>
+
+<!-- Style Info -->
+<section class="hero-info">
+  <h2>Style Information</h2>
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">Era</div>
+      <div class="info-value">2020s Modern</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Complexity</div>
+      <div class="info-value">Medium (Landing Page)</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Best For</div>
+      <div class="info-value">SaaS, Product Launches, B2B</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Font</div>
+      <div class="info-value">System-UI</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Border Radius</div>
+      <div class="info-value">8-12px</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Effects</div>
+      <div class="info-value">Scroll Reveal, Fade-in, Parallax, CTA Pulse</div>
+    </div>
+  </div>
+</section>
+
+</div>
+<script src="shared.js"></script>
+</body>
+</html>

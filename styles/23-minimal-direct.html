@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimal & Direct - UI Style Showcase</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+:root {
+  --page-bg: #FFFFFF;
+  --text-color: #111111;
+  --accent: #2563EB;
+  --accent-hover: #1D4ED8;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+  --bg-subtle: #F9FAFB;
+  --font-primary: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Hero */
+.hero {
+  padding: 160px 0 120px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.hero .subtitle {
+  font-size: 20px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.demo-nav {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.demo-nav .container {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.demo-nav .logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+.demo-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+}
+.demo-nav a:hover { color: var(--text-color); }
+.demo-nav .nav-cta {
+  margin-left: auto;
+  background: var(--text-color);
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: var(--font-primary);
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--border);
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: transparent;
+}
+.btn-ghost:hover { color: var(--text-color); background: var(--bg-subtle); }
+.btn-disabled {
+  background: var(--bg-subtle);
+  color: #D1D5DB;
+  border-color: var(--border);
+  cursor: not-allowed;
+}
+
+/* Forms */
+.form-group { margin-bottom: 24px; }
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: var(--font-primary);
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-color);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--accent);
+}
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+.form-checkbox, .form-radio { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+.form-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.form-row label { display: flex; align-items: center; gap: 8px; font-size: 15px; cursor: pointer; }
+
+/* Cards */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.card:hover { border-color: var(--accent); }
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.card-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Typography */
+.typo-h1 { font-size: 48px; font-weight: 700; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+.typo-h2 { font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+.typo-h3 { font-size: 28px; font-weight: 600; line-height: 1.3; margin-bottom: 16px; }
+.typo-h4 { font-size: 22px; font-weight: 600; line-height: 1.3; margin-bottom: 16px; }
+.typo-h5 { font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 16px; }
+.typo-h6 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; color: var(--text-muted); }
+.typo-body { font-size: 18px; line-height: 1.7; margin-bottom: 16px; }
+.typo-caption { font-size: 13px; color: var(--text-muted); }
+
+/* Modal */
+.modal-content {
+  background: #fff; border-radius: 12px; padding: 40px;
+  max-width: 440px; width: 90%;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+}
+.modal-content h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+.modal-content p { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+
+/* Palette */
+.palette-card { background: var(--bg-subtle); padding: 32px; border-radius: 8px; }
+
+/* Style Info */
+.style-info { background: var(--bg-subtle); border-radius: 8px; }
+</style>
+</head>
+<body>
+<!-- Viewport Switcher Bar -->
+<div class="vp-bar">
+  <span class="vp-label">📐 Viewport:</span>
+  <button class="vp-btn" data-size="1920">1920</button>
+  <button class="vp-btn" data-size="1440">1440</button>
+  <button class="vp-btn" data-size="1024">1024</button>
+  <button class="vp-btn" data-size="768">768</button>
+  <button class="vp-btn" data-size="375">375</button>
+  <button class="vp-btn" data-size="320">320</button>
+  <span id="vp-width" class="vp-width">Full</span>
+  <a href="index.html" class="vp-back">← Back to All Styles</a>
+</div>
+
+<div class="vp-frame">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="tag tag-era">2020s Modern</span>
+      <span class="tag tag-complexity-medium">Complexity: Medium</span>
+      <span class="tag tag-type">Landing Page</span>
+      <h1>Simple tools for<br>complex problems.</h1>
+      <p class="subtitle">We help small teams do big things. No clutter, no complexity — just the tools you need.</p>
+      <div class="flex-gap" style="justify-content:center;">
+        <button class="btn btn-primary">Get Started</button>
+        <button class="btn btn-secondary">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Demo -->
+  <nav class="demo-nav">
+    <div class="container">
+      <a href="#" class="logo">ProductName</a>
+      <a href="#">About</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">Blog</a>
+      <a href="#" class="nav-cta">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- Buttons Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Buttons</h2>
+      <div class="flex-gap">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-disabled" disabled>Disabled</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Forms Section -->
+  <section class="section" style="background: var(--bg-subtle);">
+    <div class="container">
+      <h2 class="section-title">Form Elements</h2>
+      <div style="max-width: 560px;">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="What's on your mind?"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select class="form-select">
+            <option>Choose one</option>
+            <option>General inquiry</option>
+            <option>Support</option>
+            <option>Partnership</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label><input type="checkbox" class="form-checkbox"> Keep me updated</label>
+          <label><input type="radio" name="type" class="form-radio"> Personal</label>
+          <label><input type="radio" name="type" class="form-radio"> Business</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Cards</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Focused</div>
+          <p class="card-text">Every feature is designed to solve one problem well. No bloat, no distractions.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Fast</div>
+          <p class="card-text">Built for speed. Lightweight code, instant interactions, zero waiting.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Honest</div>
+          <p class="card-text">Transparent pricing, clear documentation, no hidden tricks or dark patterns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography Section -->
+  <section class="section" style="background: var(--bg-subtle);">
+    <div class="container">
+      <h2 class="section-title">Typography</h2>
+      <div class="typo-h1">Heading 1 — Clarity First</div>
+      <div class="typo-h2">Heading 2 — Direct Message</div>
+      <div class="typo-h3">Heading 3 — Simple Statement</div>
+      <div class="typo-h4">Heading 4 — Supporting Text</div>
+      <div class="typo-h5">Heading 5 — Small Heading</div>
+      <div class="typo-h6">Heading 6 — Label</div>
+      <p class="typo-body">Typography is generous and spacious. Body text at 18px ensures readability without strain. Every word earns its place on the page.</p>
+      <p class="typo-caption">Caption — supporting text</p>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Color Palette</h2>
+      <div class="swatch-row">
+        <div class="swatch" style="background: #111111;" data-hex="#111111"></div>
+        <div class="swatch" style="background: #FFFFFF; border-color:#ccc;" data-hex="#FFFFFF"></div>
+        <div class="swatch" style="background: #2563EB;" data-hex="#2563EB"></div>
+        <div class="swatch" style="background: #6B7280;" data-hex="#6B7280"></div>
+        <div class="swatch" style="background: #E5E7EB;" data-hex="#E5E7EB"></div>
+        <div class="swatch" style="background: #F9FAFB;" data-hex="#F9FAFB"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Demo -->
+  <div id="demo-modal" class="modal-overlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.4); align-items:center; justify-content:center;">
+    <div class="modal-content">
+      <h3>Get Started</h3>
+      <p>Enter your email to create a free account. Takes about 30 seconds.</p>
+      <div class="form-group">
+        <input type="email" class="form-input" placeholder="you@example.com">
+      </div>
+      <button class="btn btn-primary" style="width:100%;" onclick="toggleModal('demo-modal')">Create Account</button>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Modal Dialog</h2>
+      <button class="btn btn-primary" onclick="toggleModal('demo-modal')">Open Modal</button>
+    </div>
+  </section>
+
+  <!-- Style Info Panel -->
+  <section class="section" style="background: var(--bg-subtle);">
+    <div class="container">
+      <div class="style-info">
+        <h3>Style Information</h3>
+        <div class="style-info-grid">
+          <div class="style-info-item">
+            <div class="label">Era/Origin</div>
+            <div class="value">2020s Modern, Medium, Landing Page</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Best For</div>
+            <div class="value">Simple service pages, indie products, consulting, freelancer</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Avoid For</div>
+            <div class="value">Data-heavy apps, enterprise platforms, feature-rich products</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Complexity</div>
+            <div class="value">Medium — maximum whitespace, minimal decoration</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">CSS Keywords</div>
+            <div class="value">generous padding, 18px body text, subtle hovers, border-only cards, single accent color</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Design Variables</div>
+            <div class="value">--accent:#2563EB, --text-muted:#6B7280, --border:#E5E7EB, font-size:18px body</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

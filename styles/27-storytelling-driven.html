@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storytelling-Driven - UI Style Showcase</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+:root {
+  --page-bg: #FFFBF5;
+  --text-color: #2D2A24;
+  --brand-primary: #B45309;
+  --brand-dark: #92400E;
+  --warm-orange: #F59E0B;
+  --warm-rose: #BE123C;
+  --warm-sage: #4D7C0F;
+  --warm-indigo: #4338CA;
+  --bg-warm: #FEF3C7;
+  --bg-cream: #FFFBF5;
+  --text-muted: #78716C;
+  --border: #E7E5E4;
+  --font-primary: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-color);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Hero */
+.hero {
+  padding: 120px 0 100px;
+  text-align: center;
+  background: linear-gradient(180deg, #FEF3C7 0%, var(--page-bg) 100%);
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-family: var(--font-serif);
+  letter-spacing: -0.5px;
+}
+.hero .subtitle {
+  font-size: 20px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 32px;
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Chapter Section */
+.chapter-section {
+  padding: 80px 0;
+  position: relative;
+}
+.chapter-section:nth-child(even) {
+  background: var(--bg-warm);
+}
+.chapter-number {
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(180,83,9,0.08);
+  line-height: 1;
+  margin-bottom: -20px;
+  font-family: var(--font-serif);
+}
+.chapter-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-family: var(--font-serif);
+}
+.chapter-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 640px;
+  font-family: var(--font-serif);
+}
+
+/* Story Card */
+.story-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  transition: background 0.3s;
+}
+.story-card:nth-child(1)::before { background: var(--warm-orange); }
+.story-card:nth-child(2)::before { background: var(--warm-rose); }
+.story-card:nth-child(3)::before { background: var(--warm-sage); }
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+}
+.story-card .card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.story-card .card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+}
+.story-card .card-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Navigation */
+.demo-nav {
+  background: var(--text-color);
+  color: #fff;
+  padding: 14px 0;
+}
+.demo-nav .container {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.demo-nav .logo { font-weight: 700; font-size: 18px; color: #fff; text-decoration: none; font-family: var(--font-serif); }
+.demo-nav a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+.demo-nav a:hover { color: #fff; }
+.demo-nav .nav-cta {
+  margin-left: auto;
+  background: var(--brand-primary);
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  transition: all 0.2s ease;
+}
+.btn-primary { background: var(--brand-primary); color: #fff; }
+.btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--brand-primary); border-color: var(--brand-primary); }
+.btn-secondary:hover { background: var(--brand-primary); color: #fff; }
+.btn-ghost { background: transparent; color: var(--text-muted); border-color: transparent; }
+.btn-ghost:hover { background: rgba(0,0,0,0.04); color: var(--text-color); }
+.btn-disabled { background: #E7E5E4; color: #A8A29E; border-color: #E7E5E4; cursor: not-allowed; }
+
+/* Forms */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.form-input, .form-textarea, .form-select {
+  width: 100%; padding: 12px 16px; font-size: 16px; font-family: var(--font-primary);
+  border: 2px solid var(--border); background: #fff; color: var(--text-color);
+  border-radius: 8px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(180,83,9,0.08);
+}
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2378716C' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px;
+}
+.form-checkbox, .form-radio { width: 18px; height: 18px; accent-color: var(--brand-primary); cursor: pointer; }
+.form-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.form-row label { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+
+/* Cards */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  background: #fff;
+  transition: all 0.2s;
+}
+.card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.card-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.card-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* Typography */
+.typo-h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; font-family: var(--font-serif); }
+.typo-h2 { font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; font-family: var(--font-serif); }
+.typo-h3 { font-size: 28px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; font-family: var(--font-serif); }
+.typo-h4 { font-size: 22px; font-weight: 600; line-height: 1.3; margin-bottom: 16px; }
+.typo-h5 { font-size: 18px; font-weight: 600; line-height: 1.4; margin-bottom: 16px; }
+.typo-h6 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; color: var(--brand-primary); }
+.typo-body { font-size: 18px; line-height: 1.8; margin-bottom: 16px; font-family: var(--font-serif); }
+.typo-caption { font-size: 13px; color: var(--text-muted); font-style: italic; }
+
+/* Modal */
+.modal-content {
+  background: #fff; border-radius: 16px; padding: 40px;
+  max-width: 480px; width: 90%;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+}
+.modal-content h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; font-family: var(--font-serif); }
+.modal-content p { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+
+/* Palette */
+.palette-card { background: var(--bg-warm); padding: 32px; border-radius: 12px; }
+
+/* Style Info */
+.style-info { background: var(--bg-warm); border-radius: 12px; }
+</style>
+</head>
+<body>
+<!-- Viewport Switcher Bar -->
+<div class="vp-bar">
+  <span class="vp-label">📐 Viewport:</span>
+  <button class="vp-btn" data-size="1920">1920</button>
+  <button class="vp-btn" data-size="1440">1440</button>
+  <button class="vp-btn" data-size="1024">1024</button>
+  <button class="vp-btn" data-size="768">768</button>
+  <button class="vp-btn" data-size="375">375</button>
+  <button class="vp-btn" data-size="320">320</button>
+  <span id="vp-width" class="vp-width">Full</span>
+  <a href="index.html" class="vp-back">← Back to All Styles</a>
+</div>
+
+<div class="vp-frame">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="tag tag-era">2020s Modern</span>
+      <span class="tag tag-complexity-medium">Complexity: Medium</span>
+      <span class="tag tag-type">Landing Page</span>
+      <h1>Every Great Product<br>Starts With a Story</h1>
+      <p class="subtitle">We believe technology should serve human ambition. Here's how we're making that happen, one chapter at a time.</p>
+      <div class="flex-gap" style="justify-content:center;">
+        <button class="btn btn-primary">Read Our Story</button>
+        <button class="btn btn-ghost">Join the Journey</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 1 -->
+  <section class="chapter-section">
+    <div class="container">
+      <div class="chapter-number">01</div>
+      <div class="chapter-title">The Beginning</div>
+      <p class="chapter-text">It started with a simple observation: the best tools are the ones that disappear. They don't demand attention — they earn trust. We set out to build something that felt less like software and more like an extension of thought.</p>
+    </div>
+  </section>
+
+  <!-- Navigation Demo -->
+  <nav class="demo-nav">
+    <div class="container">
+      <a href="#" class="logo">StoryBrand</a>
+      <a href="#">Our Story</a>
+      <a href="#">Mission</a>
+      <a href="#">Values</a>
+      <a href="#">Journal</a>
+      <a href="#" class="nav-cta">Get Involved</a>
+    </div>
+  </nav>
+
+  <!-- Buttons Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Buttons</h2>
+      <div class="flex-gap">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-disabled" disabled>Disabled</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2 -->
+  <section class="chapter-section">
+    <div class="container">
+      <div class="chapter-number">02</div>
+      <div class="chapter-title">The Mission</div>
+      <p class="chapter-text">We're on a mission to democratize creativity. Every person deserves tools that amplify their voice, not suppress it. Our platform is built on the belief that constraints breed innovation.</p>
+    </div>
+  </section>
+
+  <!-- Story Cards -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Our Values</h2>
+      <div class="grid-3">
+        <div class="story-card">
+          <div class="card-icon">🌱</div>
+          <div class="card-title">Grow Slowly</div>
+          <p class="card-text">We'd rather build something meaningful than something fast. Quality compounds over time.</p>
+        </div>
+        <div class="story-card">
+          <div class="card-icon">💡</div>
+          <div class="card-title">Think Deeply</div>
+          <p class="card-text">Every decision is intentional. We question assumptions and embrace complexity.</p>
+        </div>
+        <div class="story-card">
+          <div class="card-icon">🤝</div>
+          <div class="card-title">Build Together</div>
+          <p class="card-text">The best products emerge from collaboration. We invite our community into the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Forms Section -->
+  <section class="section" style="background: var(--bg-warm);">
+    <div class="container">
+      <h2 class="section-title">Form Elements</h2>
+      <div style="max-width: 600px;">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="What should we call you?">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Story</label>
+          <textarea class="form-textarea" placeholder="Tell us what drives you..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Chapter of Interest</label>
+          <select class="form-select">
+            <option>Choose a chapter</option>
+            <option>The Beginning</option>
+            <option>The Mission</option>
+            <option>The Future</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label><input type="checkbox" class="form-checkbox"> Subscribe to our journal</label>
+          <label><input type="radio" name="role" class="form-radio"> Reader</label>
+          <label><input type="radio" name="role" class="form-radio"> Creator</label>
+          <label><input type="radio" name="role" class="form-radio"> Builder</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3 -->
+  <section class="chapter-section">
+    <div class="container">
+      <div class="chapter-number">03</div>
+      <div class="chapter-title">The Future</div>
+      <p class="chapter-text">We're just getting started. The next chapter is about you — the creators, the dreamers, the builders who will shape what comes next. Will you write it with us?</p>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Cards</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Community Stories</div>
+          <p class="card-text">Real stories from real people building amazing things with our platform every day.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Behind the Scenes</div>
+          <p class="card-text">A transparent look at how we build, what we learn, and where we're heading.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Open Journal</div>
+          <p class="card-text">Weekly essays on creativity, technology, and the art of building with intention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography Section -->
+  <section class="section" style="background: var(--bg-warm);">
+    <div class="container">
+      <h2 class="section-title">Typography</h2>
+      <div class="typo-h1">Heading 1 — Chapter Opening</div>
+      <div class="typo-h2">Heading 2 — Narrative Beat</div>
+      <div class="typo-h3">Heading 3 — Story Moment</div>
+      <div class="typo-h4">Heading 4 — Section Break</div>
+      <div class="typo-h5">Heading 5 — Aside</div>
+      <div class="typo-h6">Heading 6 — Footnote</div>
+      <p class="typo-body">Storytelling pages use serif typefaces for narrative sections, creating an editorial, book-like quality. The typography invites reading, not scanning.</p>
+      <p class="typo-caption">Caption — editorial note and attribution</p>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Color Palette</h2>
+      <div class="swatch-row">
+        <div class="swatch" style="background: #B45309;" data-hex="#B45309"></div>
+        <div class="swatch" style="background: #F59E0B;" data-hex="#F59E0B"></div>
+        <div class="swatch" style="background: #BE123C;" data-hex="#BE123C"></div>
+        <div class="swatch" style="background: #4D7C0F;" data-hex="#4D7C0F"></div>
+        <div class="swatch" style="background: #4338CA;" data-hex="#4338CA"></div>
+        <div class="swatch" style="background: #FEF3C7;" data-hex="#FEF3C7"></div>
+        <div class="swatch" style="background: #2D2A24;" data-hex="#2D2A24"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Demo -->
+  <div id="demo-modal" class="modal-overlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+    <div class="modal-content">
+      <h3>Write Your Chapter</h3>
+      <p>Join our community of storytellers and creators. Every voice matters in this story.</p>
+      <button class="btn btn-primary" style="width:100%;" onclick="toggleModal('demo-modal')">Join the Story →</button>
+    </div>
+  </div>
+  <section class="section" style="background: var(--bg-warm);">
+    <div class="container">
+      <h2 class="section-title">Modal Dialog</h2>
+      <button class="btn btn-primary" onclick="toggleModal('demo-modal')">Open Modal</button>
+    </div>
+  </section>
+
+  <!-- Style Info Panel -->
+  <section class="section">
+    <div class="container">
+      <div class="style-info">
+        <h3>Style Information</h3>
+        <div class="style-info-grid">
+          <div class="style-info-item">
+            <div class="label">Era/Origin</div>
+            <div class="value">2020s Modern, Medium, Landing Page</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Best For</div>
+            <div class="value">Brand stories, mission-driven products, lifestyle brands</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Avoid For</div>
+            <div class="value">Data-heavy apps, enterprise tools, technical documentation</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Complexity</div>
+            <div class="value">Medium — chapter sections, scroll-triggered reveals, parallax narrative</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">CSS Keywords</div>
+            <div class="value">serif fonts, warm palette, chapter sections, emotional imagery, scroll animation</div>
+          </div>
+          <div class="style-info-item">
+            <div class="label">Design Variables</div>
+            <div class="value">--brand-primary, --warm-orange, --warm-rose, --warm-sage, --font-serif</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
