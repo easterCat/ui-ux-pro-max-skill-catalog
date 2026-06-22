@@ -270,8 +270,7 @@ body {
         <input type="text" id="search" placeholder="Search styles..." autocomplete="off">
       </div>
       <div class="filter-row" id="filterRow">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="general">General</button>
+        <button class="filter-btn active" data-filter="general">General</button>
         <button class="filter-btn" data-filter="landing">Landing</button>
         <button class="filter-btn" data-filter="bi">BI/Analytics</button>
         <button class="filter-btn" data-filter="mobile">Mobile</button>
@@ -406,7 +405,7 @@ const STYLES = [
 ];
 
 // ===== STATE =====
-let currentFilter = 'all';
+let currentFilter = 'general';
 let currentSearch = '';
 let selectedStyle = null;
 let currentVp = 'full';
@@ -417,7 +416,7 @@ function renderList() {
   const info = document.getElementById('resultInfo');
 
   const filtered = STYLES.filter(s => {
-    const mf = currentFilter === 'all' || s.type === currentFilter || s.tags.includes(currentFilter);
+    const mf = s.type === currentFilter || s.tags.includes(currentFilter);
     const ms = !currentSearch || s.name.toLowerCase().includes(currentSearch) || s.era.toLowerCase().includes(currentSearch);
     return mf && ms;
   });
